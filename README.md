@@ -1,12 +1,12 @@
-## Fus-CNNs_COVID-19##
+## Fus-CNNs_COVID-19
 
-# Introduction:#
+# Introduction:
 
 This is the code to repoduce the study of [Chest X-ray image phase features for improved diagnosis of COVID-19 using convolutional neural network](https://link.springer.com/article/10.1007/s11548-020-02305-w#citeas) from IJCAR 2021. Please cite our study if you are using this dataset and referring to our method.
 
 The highest mean accuracy on sub-dataset one of COVID-Ti is 95.57% (+/- 0.3)
 
-# Usage:#
+# Usage:
 
 - Dataset:
 
@@ -17,5 +17,10 @@ Dataset: [Kaggle](https://www.kaggle.com/endiqq/largest-covid19-dataset). (Pleas
 - Train a mono model:
 
 python --main.py --action=train or python --main.py --action=train --dataset=Enh_ijcar_mix
-The default dataset is CXR_ijcar_mix. If you would like to use enhanced images, please add --dataset=Enh_ijcar_mix
-The default network is Res50. You can change to any other investigated networks in our study by adding --network=name of network, such as --network=Alexnet
+
+(The default dataset is CXR_ijcar_mix. If you would like to use enhanced images, please add --dataset=Enh_ijcar_mix
+The default network is Res50. You can change to any other investigated networks in our study by adding --network=name of network, such as --network=Alexnet)
+
+- Train a middle-fusion model:
+
+
