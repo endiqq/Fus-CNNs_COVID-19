@@ -25,12 +25,21 @@ Dataset: [Kaggle](https://www.kaggle.com/endiqq/largest-covid19-dataset). (Pleas
 
   - Train a middle-fusion model:
 
-    python --main.py --action=middlefusion or python --main.py --action=middlefusion --method=Concat
-
-    (The default fusion method is Conv fusion)
+    python --main.py --action=middlefusion 
 
   - Train a latefusion model:
 
     python --main.py --action=latefusion
+    
+- Test
+
+  - Test a mono model:
+
+    python --main.py --action=test or python --main.py --action=test --dataset=Enh_ijcar_mix
+  
+  - Test middle fusion model or late fusion model:
+
+    python --main.py --action=test_middlefusion or python --main.py --action=test_latefusion
+
 
 
