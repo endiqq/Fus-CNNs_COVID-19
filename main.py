@@ -119,9 +119,9 @@ if __name__ == '__main__':
                             torch.save(Last_model_wts, ('CNN_'+args.action+'_Last_lastfc_'+str(num_classes)+'class_'+args.network+'_Sum_'
                                                         +Dataset+'_Enh_ijcar_mix_k_'+str(k+1)+'.pt'))                                        
                         else:
-                            torch.save(Best_model_wts, ('CNN_'+args.action+'_Best_lastconv_'+str(num_classes)+'class_'+args.network+'_Conv_'
+                            torch.save(Best_model_wts, ('CNN_'+args.action+'_Best_lastconv_'+str(num_classes)+'class_'+args.network+'_'+args.method+'_'
                                                         +Dataset+'_Enh_ijcar_mix_k_'+str(k+1)+'.pt'))#save weights
-                            torch.save(Last_model_wts, ('CNN_'+args.action+'_Last_lastconv_'+str(num_classes)+'class_'+args.network+'_Conv_'
+                            torch.save(Last_model_wts, ('CNN_'+args.action+'_Last_lastconv_'+str(num_classes)+'class_'+args.network+'_'+args.method+'_'
                                                         +Dataset+'_Enh_ijcar_mix_k_'+str(k+1)+'.pt'))
                             
                         K_Accuracy.append(best_acc)
@@ -297,6 +297,33 @@ if __name__ == '__main__':
             file_9 = open(args.action+'_'+wts+'_Adam_'+args.network+'_allsubs_'+Dataset+'_alltype_scores.pickle','wb')#
             file_10 = open(args.action+'_'+wts+'_Adam_'+args.network+'_allsubs_'+Dataset+'_alltype_paths.pickle','wb')
             pickle.dump(NN_alltype_all_scores, file_9) # raw prediction score each K
+            pickle.dump(NN_alltype_all_paths, file_10) # image path each K
+
+        elif args.action=='test_middlefusion':
+            file_1 = open(args.action+'_'+args.method+'_'+wts+'_'+args.network+'_allsubs_'+Dataset+'_Enh_ijcar_mix_acc.pickle','wb') #class accurray
+            file_2 = open(args.action+'_'+args.method+'_'+wts+'_'+args.network+'_allsubs_'+Dataset+'_all_avg_single_Enh_ijcar_mix_acc.pickle','wb')#
+            file_3 = open(args.action+'_'+args.method+'_'+wts+'_'+args.network+'_allsubs_'+Dataset+'_all_var_single_Enh_ijcar_mix_acc.pickle','wb')
+            file_4 = open(args.action+'_'+args.method+'_'+wts+'_'+args.network+'_allsubs_overall_'+Dataset+'_all_Enh_ijcar_mix_acc.pickle','wb') # overall accuracy
+            file_5 = open(args.action+'_'+args.method+'_'+wts+'_'+args.network+'_allsubs_overall_'+Dataset+'_all_avg_single_Enh_ijcar_mix_acc.pickle','wb')#
+            file_6 = open(args.action+'_'+args.method+'_'+wts+'_'+args.network+'_allsubs_overall_'+Dataset+'_all_var_single_Enh_ijcar_mix_acc.pickle','wb')
+
+            pickle.dump(all_Dataset_acc, file_1) # each class acc each K
+            pickle.dump(all_avg_single_Dataset_acc, file_2) # each class avg over K
+            pickle.dump(all_var_single_Dataset_acc, file_3) # each class var over K
+            pickle.dump(overall_all_Dataset_acc, file_4) # overall each K
+            pickle.dump(overall_all_avg_single_Dataset_acc, file_5) # overall avg over K
+            pickle.dump(overall_all_var_single_Dataset_acc, file_6) # overall var over K
+            #pickle.dump(all_NN_all_Dataset_acc, file_3)
+            
+            #save label and preds for metrics
+            file_7 = open(args.action+'_'+args.method+'_'+wts+'_'+args.network+'_allsubs_'+Dataset+'_alltype_Enh_ijcar_mix_preds.pickle','wb')#
+            file_8 = open(args.action+'_'+args.method+'_'+wts+'_'+args.network+'_allsubs_'+Dataset+'_alltype_Enh_ijcar_mix_label.pickle','wb')
+            pickle.dump(NN_alltype_all_preds, file_7) # preds each K
+            pickle.dump(NN_alltype_all_labels, file_8) # label each K
+            
+            file_9 = open(args.action+'_'+args.method+'_'+wts+'_'+args.network+'_allsubs_'+Dataset+'_alltype_Enh_ijcar_mix_scores.pickle','wb')#
+            file_10 = open(args.action+'_'+args.method+'_'+wts+'_'+args.network+'_allsubs_'+Dataset+'_alltype_Enh_ijcar_mix_paths.pickle','wb')
+            pickle.dump(NN_alltype_all_scores, file_9) # raw predication score each K
             pickle.dump(NN_alltype_all_paths, file_10) # image path each K
             
         else:
