@@ -1,4 +1,4 @@
-## Fus-CNNs_COVID-19
+## Fus-CNNs_COVID-19 (Pytorch)
 
 # Introduction:
 
